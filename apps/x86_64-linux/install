@@ -20,15 +20,6 @@ download_config() {
   cd wabisabi-main
 }
 
-#run_apply() {
-#  #./apps/x86_64-linux/apply
-#  #if [ ! -f /tmp/username.txt ]; then
-#  #  echo -e "Error: /tmp/username.txt does not exist."
-#  #  exit 1
-#  #fi
-#  #export USERNAME=$(cat /tmp/username.txt)
-#}
-
 run_disko() {
   sudo nix run --extra-experimental-features nix-command --extra-experimental-features flakes \
     github:nix-community/disko -- --mode zap_create_mount ./modules/nixos/disk-config.nix
@@ -41,43 +32,26 @@ setup_files() {
 }
 
 install_nixos() {
-  ARCH=$(uname -m)
-
-  case "$ARCH" in
-    x86_64)
-      FLAKE_TARGET="x86_64-linux"
-      ;;
-    aarch64)
-      FLAKE_TARGET="aarch64-linux"
-      ;;
-    *)
-      echo -e "Unsupported architecture: $ARCH"
-      exit 1
-      ;;
-  esac
-
   echo "Disk initialization complete. ________________________________________"
   echo "Installing NixOS........................................"
 
-  #sudo nixos-install --flake .#$FLAKE_TARGET $@
   read -p "Target: " target
   sudo nixos-install --flake .#$target $@
   sudo chmod -R 775 /mnt/etc/nixos
 }
 
-prompt_reboot() {
-  read -p "Do you want to reboot now? (yes/no) " choice
-  case "$choice" in
-  y|Y|yes|YES ) echo -e "Rebooting..." && sudo reboot;;
-  * ) echo -e "Reboot skipped.";;
-  esac
-}
+#prompt_reboot() {
+#  read -p "Do you want to reboot now? (yes/no) " choice
+#  case "$choice" in
+#  y|Y|yes|YES ) echo -e "Rebooting..." && sudo reboot;;
+#  * ) echo -e "Reboot skipped.";;
+#  esac
+#}
 
 cleanup
 check_installer
 download_config
-#run_apply
 run_disko
 setup_files
 install_nixos
-prompt_reboot
+#prompt_reboot

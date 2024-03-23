@@ -2,12 +2,9 @@
 
 with pkgs; [
   # General packages for development and system management
-  #aspell
-  #aspellDicts.en
   bash-completion
   bat
   coreutils
-  #neovim
   openssh
   wget
   zip
@@ -21,11 +18,11 @@ with pkgs; [
   # Text and terminal utilities
   htop
   iftop
+  vim
 
   # Python
   #python39
   #python39Packages.virtualenv # globally install virtualenv
   #ansible
   #ansible-lint
-
 ]
