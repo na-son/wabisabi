@@ -6,9 +6,12 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-  outputs = { self, nixpkgs, disko }@inputs:
+  outputs = { self, nixpkgs, disko, nixos-generators }@inputs:
     let
       user = "nason";
       linuxSystems = [ "x86_64-linux" "aarch64-linux" ];
@@ -32,6 +35,32 @@
 
       nixosConfigurations.peace = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = inputs;
+        modules = [ disko.nixosModules.disko ./hosts/nixos ];
+      };
+
+      packages.x86_64-linux = {
+        vmware = nixos-generators.nixosGenerate {
+          system = "x86_64-linux";
+          modules = [ disko.nixosModules.disko ./hosts/nixos ];
+          format = "vmware";
+
+          # optional arguments:
+          # explicit nixpkgs and lib:
+          # pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          # lib = nixpkgs.legacyPackages.x86_64-linux.lib;
+          # additional arguments to pass to modules:
+          # specialArgs = { myExtraArg = "foobar"; };
+        };
+        iso = nixos-generators.nixosGenerate {
+          system = "x86_64-linux";
+          format = "iso";
+        };
+      };
+
+      nixosConfigurations.love = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+
         specialArgs = inputs;
         modules = [ disko.nixosModules.disko ./hosts/nixos ];
       };

@@ -15,6 +15,7 @@ nix run .#build
 Make configuration active
 
 ```shell
+nixos-rebuild switch --flake .#peace
 nix run .#build-switch
 ```
 

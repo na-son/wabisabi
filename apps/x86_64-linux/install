@@ -35,18 +35,9 @@ install_nixos() {
   echo "Disk initialization complete. ________________________________________"
   echo "Installing NixOS........................................"
 
-  read -p "Target: " target
-  sudo nixos-install --flake .#$target $@
+  sudo nixos-install --flake .#peace $@
   sudo chmod -R 775 /mnt/etc/nixos
 }
-
-#prompt_reboot() {
-#  read -p "Do you want to reboot now? (yes/no) " choice
-#  case "$choice" in
-#  y|Y|yes|YES ) echo -e "Rebooting..." && sudo reboot;;
-#  * ) echo -e "Reboot skipped.";;
-#  esac
-#}
 
 cleanup
 check_installer
@@ -54,4 +45,3 @@ download_config
 run_disko
 setup_files
 install_nixos
-#prompt_reboot
