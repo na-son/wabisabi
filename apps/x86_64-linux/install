@@ -20,14 +20,14 @@ download_config() {
   cd wabisabi-main
 }
 
-run_apply() {
-  #./apps/x86_64-linux/apply
-  #if [ ! -f /tmp/username.txt ]; then
-  #  echo -e "Error: /tmp/username.txt does not exist."
-  #  exit 1
-  #fi
-  #export USERNAME=$(cat /tmp/username.txt)
-}
+#run_apply() {
+#  #./apps/x86_64-linux/apply
+#  #if [ ! -f /tmp/username.txt ]; then
+#  #  echo -e "Error: /tmp/username.txt does not exist."
+#  #  exit 1
+#  #fi
+#  #export USERNAME=$(cat /tmp/username.txt)
+#}
 
 run_disko() {
   sudo nix run --extra-experimental-features nix-command --extra-experimental-features flakes \
@@ -76,7 +76,7 @@ prompt_reboot() {
 cleanup
 check_installer
 download_config
-run_apply
+#run_apply
 run_disko
 setup_files
 install_nixos
