@@ -8,6 +8,7 @@ with pkgs; [
   openssh
   wget
   zip
+  unzip
 
   # Cloud-related tools and SDKs
   #docker
