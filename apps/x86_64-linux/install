@@ -21,12 +21,12 @@ download_config() {
 }
 
 run_apply() {
-  ./apps/x86_64-linux/apply
-  if [ ! -f /tmp/username.txt ]; then
-    echo -e "Error: /tmp/username.txt does not exist."
-    exit 1
-  fi
-  export USERNAME=$(cat /tmp/username.txt)
+  #./apps/x86_64-linux/apply
+  #if [ ! -f /tmp/username.txt ]; then
+  #  echo -e "Error: /tmp/username.txt does not exist."
+  #  exit 1
+  #fi
+  #export USERNAME=$(cat /tmp/username.txt)
 }
 
 run_disko() {
