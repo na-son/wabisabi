@@ -56,90 +56,21 @@ in {
   };
 
   programs = {
-    dconf.enable = true;
     zsh.enable = true;
   };
 
   services = {
     dbus.enable = true;
     openssh.enable = true;
-    gnome.gnome-keyring.enable = true;
-    hardware.bolt.enable = true;
-    upower.enable = true;
-
-    thermald.enable = true;
-
-    #tlp = {
-    #  enable = true;
-    #  settings = {
-    #    RUNTIME_PM_ON_AC = "auto";
-    #    CPU_ENERGY_PERF_POLICY_ON_AC = "auto";
-    #    DEVICES_TO_DISABLE_ON_LAN_CONNECT = "wifi wwan";
-    #    DEVICES_TO_ENABLE_ON_LAN_DISCONNECT = "wifi wwan";
-    #  };
-    #};
-
-    #greetd = {
-    #  enable = true;
-    #  settings = {
-    #    default_session = {
-    #      command = "${tuigreet} --time --remember --cmd sway";
-    #      user = "greeter";
-    #    };
-    #  };
-    #};
-
-    #pipewire = {
-    #  enable = true;
-    #  alsa.enable = true;
-    #  pulse.enable = true;
-    #};
   };
 
   systemd = {
     services = {
-      #greetd.serviceConfig = {
-      #  Type = "idle";
-      #  StandardInput = "tty";
-      #  StandardOutput = "tty";
-      #  StandardError = "journal"; # Without this errors will spam on screen
-
-      #  # Without these bootlogs will spam on screen
-      #  TTYReset = true;
-      #  TTYVHangup = true;
-      #  TTYVTDisallocate = true;
-      #};
     };
   };
 
-  #xdg.portal = {
-  #  enable = true;
-  #  wlr.enable = true;
-  #  config = {
-  #    sway = {
-  #      default = [ "gtk" ];
-  #      "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
-  #    };
-  #  };
-  #};
-
   hardware = {
     enableAllFirmware = true;
-    #brillo.enable = true; # brightness
-    #opengl = {
-    #  enable = true;
-    #  # intel AV stuff
-    #  extraPackages = with pkgs; [
-    #    intel-media-driver
-    #    vaapiIntel
-    #    vaapiVdpau
-    #    libvdpau-va-gl
-    #    intel-ocl
-    #    intel-vaapi-driver
-    #  ];
-    #};
-
-    # hardware.nvidia.modesetting.enable = true;
   };
 
   #virtualisation = {
@@ -177,9 +108,6 @@ in {
     }];
   };
 
-  #fonts.packages = with pkgs; [ dejavu_fonts jetbrains-mono font-awesome ];
-
   environment.systemPackages = with pkgs; [ gitAndTools.gitFull inetutils ];
-
   system.stateVersion = "21.05"; # Don't change this
 }

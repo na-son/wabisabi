@@ -42,7 +42,7 @@
       packages.x86_64-linux = {
         vmware = nixos-generators.nixosGenerate {
           system = "x86_64-linux";
-          modules = [ disko.nixosModules.disko ./hosts/nixos ];
+          #modules = [ ./hosts/nixos ];
           format = "vmware";
 
           # optional arguments:
