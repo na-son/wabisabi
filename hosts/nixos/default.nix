@@ -62,6 +62,16 @@ in {
   services = {
     dbus.enable = true;
     openssh.enable = true;
+    pixiecore = {
+      enable = true;
+      mode = "boot";
+      openFirewall = true;
+      kernel = "";
+      initrd = "";
+
+      cmdLine = "echo $HOSTNAME";
+
+    };
   };
 
   systemd = {
