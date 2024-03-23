@@ -39,18 +39,18 @@
         modules = [ disko.nixosModules.disko ./hosts/nixos ];
       };
 
-      packages.x86_64-linux = {
-        #vmware = nixos-generators.nixosGenerate {
-        #  system = "x86_64-linux";
-        #  #modules = [ ./hosts/nixos ];
-        #  format = "vmware";
-        #};
+      #packages.x86_64-linux = {
+      #  #vmware = nixos-generators.nixosGenerate {
+      #  #  system = "x86_64-linux";
+      #  #  #modules = [ ./hosts/nixos ];
+      #  #  format = "vmware";
+      #  #};
 
-        raw-efi = nixos-generators.nixosGenerate {
-          system = "x86_64-linux";
-          format = "raw-efi";
-        };
-      };
+      #   = nixos-generators.nixosGenerate {
+      #    system = "x86_64-linux";
+      #    format = "raw-efi";
+      #  };
+      #};
 
       nixosConfigurations.love = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";

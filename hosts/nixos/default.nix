@@ -66,11 +66,9 @@ in {
       enable = true;
       mode = "boot";
       openFirewall = true;
-      kernel = "";
-      initrd = "";
-
-      cmdLine = "echo $HOSTNAME";
-
+      kernel = "/etc/nixos/result/kernel";
+      initrd = "/etc/nixos/result/initrd";
+      #cmdLine = "echo $HOSTNAME";
     };
   };
 
