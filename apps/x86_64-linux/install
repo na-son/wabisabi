@@ -44,7 +44,7 @@ build_nixos() {
   echo "Building PXE........................................"
 
   cd /mnt/etc/nixos
-  sudo nix build --extra-experimental-features 'nix-command flakes' .#peace
+  sudo nixos-rebuild build --flake .#peace
   sudo chmod -R 775 /mnt/etc/nixos
 }
 
